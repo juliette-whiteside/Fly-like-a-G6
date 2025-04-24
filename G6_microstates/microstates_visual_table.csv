@@ -1,0 +1,38 @@
+M_L / M_S,3.0,2.0,1.0,0.0,-1.0,-2.0,-3.0
+-18,,,,1 states,,,
+-17,,,1 states,2 states,1 states,,
+-16,,,2 states,5 states,2 states,,
+-15,,,5 states,10 states,5 states,,
+-14,,1 states,9 states,18 states,9 states,1 states,
+-13,,2 states,17 states,30 states,17 states,2 states,
+-12,,4 states,27 states,49 states,27 states,4 states,
+-11,,7 states,43 states,72 states,43 states,7 states,
+-10,,12 states,62 states,104 states,62 states,12 states,
+-9,1 states,18 states,88 states,142 states,88 states,18 states,1 states
+-8,1 states,26 states,116 states,187 states,116 states,26 states,1 states
+-7,2 states,35 states,151 states,236 states,151 states,35 states,2 states
+-6,3 states,46 states,185 states,291 states,185 states,46 states,3 states
+-5,4 states,56 states,223 states,342 states,223 states,56 states,4 states
+-4,5 states,67 states,255 states,393 states,255 states,67 states,5 states
+-3,7 states,76 states,287 states,436 states,287 states,76 states,7 states
+-2,7 states,84 states,308 states,470 states,308 states,84 states,7 states
+-1,8 states,88 states,325 states,490 states,325 states,88 states,8 states
+0,8 states,90 states,328 states,500 states,328 states,90 states,8 states
+1,8 states,88 states,325 states,490 states,325 states,88 states,8 states
+2,7 states,84 states,308 states,470 states,308 states,84 states,7 states
+3,7 states,76 states,287 states,436 states,287 states,76 states,7 states
+4,5 states,67 states,255 states,393 states,255 states,67 states,5 states
+5,4 states,56 states,223 states,342 states,223 states,56 states,4 states
+6,3 states,46 states,185 states,291 states,185 states,46 states,3 states
+7,2 states,35 states,151 states,236 states,151 states,35 states,2 states
+8,1 states,26 states,116 states,187 states,116 states,26 states,1 states
+9,1 states,18 states,88 states,142 states,88 states,18 states,1 states
+10,,12 states,62 states,104 states,62 states,12 states,
+11,,7 states,43 states,72 states,43 states,7 states,
+12,,4 states,27 states,49 states,27 states,4 states,
+13,,2 states,17 states,30 states,17 states,2 states,
+14,,1 states,9 states,18 states,9 states,1 states,
+15,,,5 states,10 states,5 states,,
+16,,,2 states,5 states,2 states,,
+17,,,1 states,2 states,1 states,,
+18,,,,1 states,,,

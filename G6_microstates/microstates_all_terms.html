@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microstates Table with All Term Symbols</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table.data-table {
+            border-collapse: separate;
+            border-spacing: 4px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            position: relative;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border: 2px solid;
+        }
+        .config-info {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .1s-border {
+            outline: 2px solid #FF0000;
+            outline-offset: 0px;
+            z-index: 1;
+        }
+        .3s-border {
+            outline: 2px solid #00FF00;
+            outline-offset: 2px;
+            z-index: 2;
+        }
+        .5s-border {
+            outline: 2px solid #800000;
+            outline-offset: 4px;
+            z-index: 3;
+        }
+        .1p-border {
+            outline: 2px solid #800080;
+            outline-offset: 6px;
+            z-index: 4;
+        }
+        .3p-border {
+            outline: 2px solid #00FFFF;
+            outline-offset: 8px;
+            z-index: 5;
+        }
+        .5p-border {
+            outline: 2px solid #FF69B4;
+            outline-offset: 10px;
+            z-index: 6;
+        }
+        .7p-border {
+            outline: 2px solid #A52A2A;
+            outline-offset: 12px;
+            z-index: 7;
+        }
+        .1d-border {
+            outline: 2px solid #FF00FF;
+            outline-offset: 14px;
+            z-index: 8;
+        }
+        .3d-border {
+            outline: 2px solid #808000;
+            outline-offset: 16px;
+            z-index: 9;
+        }
+        .5d-border {
+            outline: 2px solid #000080;
+            outline-offset: 18px;
+            z-index: 10;
+        }
+        .1f-border {
+            outline: 2px solid #800000;
+            outline-offset: 20px;
+            z-index: 11;
+        }
+        .3f-border {
+            outline: 2px solid #9370DB;
+            outline-offset: 22px;
+            z-index: 12;
+        }
+        .5f-border {
+            outline: 2px solid #CD853F;
+            outline-offset: 24px;
+            z-index: 13;
+        }
+        .7f-border {
+            outline: 2px solid #D2691E;
+            outline-offset: 26px;
+            z-index: 14;
+        }
+        .1g-border {
+            outline: 2px solid #2E8B57;
+            outline-offset: 28px;
+            z-index: 15;
+        }
+        .3g-border {
+            outline: 2px solid #4169E1;
+            outline-offset: 30px;
+            z-index: 16;
+        }
+        .5g-border {
+            outline: 2px solid #FF4500;
+            outline-offset: 32px;
+            z-index: 17;
+        }
+        .7g-border {
+            outline: 2px solid #FF8C00;
+            outline-offset: 34px;
+            z-index: 18;
+        }
+        .1h-border {
+            outline: 2px solid #556B2F;
+            outline-offset: 36px;
+            z-index: 19;
+        }
+        .3h-border {
+            outline: 2px solid #483D8B;
+            outline-offset: 38px;
+            z-index: 20;
+        }
+        .5h-border {
+            outline: 2px solid #008B8B;
+            outline-offset: 40px;
+            z-index: 21;
+        }
+        .7h-border {
+            outline: 2px solid #8B008B;
+            outline-offset: 42px;
+            z-index: 22;
+        }
+        .1i-border {
+            outline: 2px solid #00CED1;
+            outline-offset: 44px;
+            z-index: 23;
+        }
+        .3i-border {
+            outline: 2px solid #00FA9A;
+            outline-offset: 46px;
+            z-index: 24;
+        }
+        .5i-border {
+            outline: 2px solid #B22222;
+            outline-offset: 48px;
+            z-index: 25;
+        }
+        .7i-border {
+            outline: 2px solid #4B0082;
+            outline-offset: 50px;
+            z-index: 26;
+        }
+        .1k-border {
+            outline: 2px solid #ADFF2F;
+            outline-offset: 52px;
+            z-index: 27;
+        }
+        .3k-border {
+            outline: 2px solid #F08080;
+            outline-offset: 54px;
+            z-index: 28;
+        }
+        .5k-border {
+            outline: 2px solid #FFB6C1;
+            outline-offset: 56px;
+            z-index: 29;
+        }
+        .7k-border {
+            outline: 2px solid #DB7093;
+            outline-offset: 58px;
+            z-index: 30;
+        }
+        .1l-border {
+            outline: 2px solid #4169E1;
+            outline-offset: 60px;
+            z-index: 31;
+        }
+        .3l-border {
+            outline: 2px solid #FA8072;
+            outline-offset: 62px;
+            z-index: 32;
+        }
+        .5l-border {
+            outline: 2px solid #2E8B57;
+            outline-offset: 64px;
+            z-index: 33;
+        }
+        .1m-border {
+            outline: 2px solid #D8BFD8;
+            outline-offset: 66px;
+            z-index: 34;
+        }
+        .3m-border {
+            outline: 2px solid #40E0D0;
+            outline-offset: 68px;
+            z-index: 35;
+        }
+        .5m-border {
+            outline: 2px solid #F5DEB3;
+            outline-offset: 70px;
+            z-index: 36;
+        }
+        .7m-border {
+            outline: 2px solid #9ACD32;
+            outline-offset: 72px;
+            z-index: 37;
+        }
+        .1n-border {
+            outline: 2px solid #DDA0DD;
+            outline-offset: 74px;
+            z-index: 38;
+        }
+        .3n-border {
+            outline: 2px solid #800080;
+            outline-offset: 76px;
+            z-index: 39;
+        }
+        .5n-border {
+            outline: 2px solid #FF0000;
+            outline-offset: 78px;
+            z-index: 40;
+        }
+        .1o-border {
+            outline: 2px solid #6A5ACD;
+            outline-offset: 80px;
+            z-index: 41;
+        }
+        .3o-border {
+            outline: 2px solid #FFFAFA;
+            outline-offset: 82px;
+            z-index: 42;
+        }
+        .5o-border {
+            outline: 2px solid #4682B4;
+            outline-offset: 84px;
+            z-index: 43;
+        }
+        .1q-border {
+            outline: 2px solid #FF6347;
+            outline-offset: 86px;
+            z-index: 44;
+        }
+        .3q-border {
+            outline: 2px solid #EE82EE;
+            outline-offset: 88px;
+            z-index: 45;
+        }
+        .5q-border {
+            outline: 2px solid #FFFF00;
+            outline-offset: 90px;
+            z-index: 46;
+        }
+        .1r-border {
+            outline: 2px solid #00FF00;
+            outline-offset: 92px;
+            z-index: 47;
+        }
+        .3r-border {
+            outline: 2px solid #800000;
+            outline-offset: 94px;
+            z-index: 48;
+        }
+        .5r-border {
+            outline: 2px solid #800080;
+            outline-offset: 96px;
+            z-index: 49;
+        }
+        .1t-border {
+            outline: 2px solid #FF69B4;
+            outline-offset: 98px;
+            z-index: 50;
+        }
+        .3t-border {
+            outline: 2px solid #FF00FF;
+            outline-offset: 100px;
+            z-index: 51;
+        }
+        .5t-border {
+            outline: 2px solid #808000;
+            outline-offset: 102px;
+            z-index: 52;
+        }
+        .1u-border {
+            outline: 2px solid #32CD32;
+            outline-offset: 104px;
+            z-index: 53;
+        }
+        .3u-border {
+            outline: 2px solid #FFD700;
+            outline-offset: 106px;
+            z-index: 54;
+        }
+        .1v-border {
+            outline: 2px solid #8A2BE2;
+            outline-offset: 108px;
+            z-index: 55;
+        }
+        .3v-border {
+            outline: 2px solid #DAA520;
+            outline-offset: 110px;
+            z-index: 56;
+        }
+        .3w-border {
+            outline: 2px solid #556B2F;
+            outline-offset: 112px;
+            z-index: 57;
+        }
+        .1x-border {
+            outline: 2px solid #8B008B;
+            outline-offset: 114px;
+            z-index: 58;
+        }
+    </style>
+</head>
+<body>
+    <h2>Microstates Table with All Term Symbols</h2>
+    
+    <div class="config-info">
+        Configuration: G^6 (L=4, 6 electrons)
+    </div>
+    
+    <div class="legend">
+        <h3>Legend:</h3>
+        <div style="display: flex; flex-wrap: wrap; width: 100%;">
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF0000;"></div>
+                <div>1S (1S)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #00FF00;"></div>
+                <div>3S (3S)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #800000;"></div>
+                <div>5S (5S)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #800080;"></div>
+                <div>1P (1P)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #00FFFF;"></div>
+                <div>3P (3P)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF69B4;"></div>
+                <div>5P (5P)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #A52A2A;"></div>
+                <div>7P (7P)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF00FF;"></div>
+                <div>1D (1D)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #808000;"></div>
+                <div>3D (3D)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #000080;"></div>
+                <div>5D (5D)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #800000;"></div>
+                <div>1F (1F)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #9370DB;"></div>
+                <div>3F (3F)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #CD853F;"></div>
+                <div>5F (5F)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #D2691E;"></div>
+                <div>7F (7F)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #2E8B57;"></div>
+                <div>1G (1G)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #4169E1;"></div>
+                <div>3G (3G)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF4500;"></div>
+                <div>5G (5G)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF8C00;"></div>
+                <div>7G (7G)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #556B2F;"></div>
+                <div>1H (1H)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #483D8B;"></div>
+                <div>3H (3H)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #008B8B;"></div>
+                <div>5H (5H)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #8B008B;"></div>
+                <div>7H (7H)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #00CED1;"></div>
+                <div>1I (1I)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #00FA9A;"></div>
+                <div>3I (3I)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #B22222;"></div>
+                <div>5I (5I)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #4B0082;"></div>
+                <div>7I (7I)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #ADFF2F;"></div>
+                <div>1K (1K)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #F08080;"></div>
+                <div>3K (3K)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FFB6C1;"></div>
+                <div>5K (5K)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #DB7093;"></div>
+                <div>7K (7K)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #4169E1;"></div>
+                <div>1L (1L)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FA8072;"></div>
+                <div>3L (3L)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #2E8B57;"></div>
+                <div>5L (5L)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #D8BFD8;"></div>
+                <div>1M (1M)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #40E0D0;"></div>
+                <div>3M (3M)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #F5DEB3;"></div>
+                <div>5M (5M)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #9ACD32;"></div>
+                <div>7M (7M)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #DDA0DD;"></div>
+                <div>1N (1N)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #800080;"></div>
+                <div>3N (3N)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF0000;"></div>
+                <div>5N (5N)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #6A5ACD;"></div>
+                <div>1O (1O)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FFFAFA;"></div>
+                <div>3O (3O)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #4682B4;"></div>
+                <div>5O (5O)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF6347;"></div>
+                <div>1Q (1Q)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #EE82EE;"></div>
+                <div>3Q (3Q)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FFFF00;"></div>
+                <div>5Q (5Q)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #00FF00;"></div>
+                <div>1R (1R)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #800000;"></div>
+                <div>3R (3R)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #800080;"></div>
+                <div>5R (5R)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF69B4;"></div>
+                <div>1T (1T)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FF00FF;"></div>
+                <div>3T (3T)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #808000;"></div>
+                <div>5T (5T)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #32CD32;"></div>
+                <div>1U (1U)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #FFD700;"></div>
+                <div>3U (3U)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #8A2BE2;"></div>
+                <div>1V (1V)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #DAA520;"></div>
+                <div>3V (3V)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #556B2F;"></div>
+                <div>3W (3W)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border-color: #8B008B;"></div>
+                <div>1X (1X)</div>
+            </div>
+        </div>
+    </div>
+    
+    <table class="data-table">
+        <tr>
+            <th>M_L / M_S</th>
+            <th>3.0</th>
+            <th>2.0</th>
+            <th>1.0</th>
+            <th>0.0</th>
+            <th>-1.0</th>
+            <th>-2.0</th>
+            <th>-3.0</th>
+        </tr>
+        <tr>
+            <th>-18</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="1x-border">1 states</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-17</th>
+            <td></td>
+            <td></td>
+            <td class="3w-border">1 states</td>
+            <td class="3w-border 1x-border">2 states</td>
+            <td class="3w-border">1 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-16</th>
+            <td></td>
+            <td></td>
+            <td class="3v-border 3w-border">2 states</td>
+            <td class="1v-border 3v-border 3w-border 1x-border">5 states</td>
+            <td class="3v-border 3w-border">2 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-15</th>
+            <td></td>
+            <td></td>
+            <td class="3u-border 3v-border 3w-border">5 states</td>
+            <td class="1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">10 states</td>
+            <td class="3u-border 3v-border 3w-border">5 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-14</th>
+            <td></td>
+            <td class="5t-border">1 states</td>
+            <td class="3t-border 5t-border 3u-border 3v-border 3w-border">9 states</td>
+            <td class="1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">18 states</td>
+            <td class="3t-border 5t-border 3u-border 3v-border 3w-border">9 states</td>
+            <td class="5t-border">1 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-13</th>
+            <td></td>
+            <td class="5r-border 5t-border">2 states</td>
+            <td class="3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">17 states</td>
+            <td class="1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">30 states</td>
+            <td class="3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">17 states</td>
+            <td class="5r-border 5t-border">2 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-12</th>
+            <td></td>
+            <td class="5q-border 5r-border 5t-border">4 states</td>
+            <td class="3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">27 states</td>
+            <td class="1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">49 states</td>
+            <td class="3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">27 states</td>
+            <td class="5q-border 5r-border 5t-border">4 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-11</th>
+            <td></td>
+            <td class="5o-border 5q-border 5r-border 5t-border">7 states</td>
+            <td class="3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">43 states</td>
+            <td class="1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">72 states</td>
+            <td class="3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">43 states</td>
+            <td class="5o-border 5q-border 5r-border 5t-border">7 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-10</th>
+            <td></td>
+            <td class="5n-border 5o-border 5q-border 5r-border 5t-border">12 states</td>
+            <td class="3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">62 states</td>
+            <td class="1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">104 states</td>
+            <td class="3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">62 states</td>
+            <td class="5n-border 5o-border 5q-border 5r-border 5t-border">12 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-9</th>
+            <td class="7m-border">1 states</td>
+            <td class="5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">18 states</td>
+            <td class="3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">88 states</td>
+            <td class="1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">142 states</td>
+            <td class="3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">88 states</td>
+            <td class="5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">18 states</td>
+            <td class="7m-border">1 states</td>
+        </tr>
+        <tr>
+            <th>-8</th>
+            <td class="7m-border">1 states</td>
+            <td class="5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">26 states</td>
+            <td class="3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">116 states</td>
+            <td class="1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">187 states</td>
+            <td class="3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">116 states</td>
+            <td class="5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">26 states</td>
+            <td class="7m-border">1 states</td>
+        </tr>
+        <tr>
+            <th>-7</th>
+            <td class="7k-border 7m-border">2 states</td>
+            <td class="5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">35 states</td>
+            <td class="3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">151 states</td>
+            <td class="1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">236 states</td>
+            <td class="3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">151 states</td>
+            <td class="5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">35 states</td>
+            <td class="7k-border 7m-border">2 states</td>
+        </tr>
+        <tr>
+            <th>-6</th>
+            <td class="7i-border 7k-border 7m-border">3 states</td>
+            <td class="5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">46 states</td>
+            <td class="3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">185 states</td>
+            <td class="1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">291 states</td>
+            <td class="3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">185 states</td>
+            <td class="5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">46 states</td>
+            <td class="7i-border 7k-border 7m-border">3 states</td>
+        </tr>
+        <tr>
+            <th>-5</th>
+            <td class="7h-border 7i-border 7k-border 7m-border">4 states</td>
+            <td class="5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">56 states</td>
+            <td class="3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">223 states</td>
+            <td class="1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">342 states</td>
+            <td class="3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">223 states</td>
+            <td class="5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">56 states</td>
+            <td class="7h-border 7i-border 7k-border 7m-border">4 states</td>
+        </tr>
+        <tr>
+            <th>-4</th>
+            <td class="7g-border 7h-border 7i-border 7k-border 7m-border">5 states</td>
+            <td class="5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">67 states</td>
+            <td class="3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">255 states</td>
+            <td class="1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">393 states</td>
+            <td class="3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">255 states</td>
+            <td class="5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">67 states</td>
+            <td class="7g-border 7h-border 7i-border 7k-border 7m-border">5 states</td>
+        </tr>
+        <tr>
+            <th>-3</th>
+            <td class="7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">7 states</td>
+            <td class="5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">76 states</td>
+            <td class="3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">287 states</td>
+            <td class="1f-border 3f-border 5f-border 7f-border 1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">436 states</td>
+            <td class="3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">287 states</td>
+            <td class="5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">76 states</td>
+            <td class="7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">7 states</td>
+        </tr>
+        <tr>
+            <th>-2</th>
+            <td class="7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">7 states</td>
+            <td class="5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">84 states</td>
+            <td class="3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">308 states</td>
+            <td class="1d-border 3d-border 5d-border 1f-border 3f-border 5f-border 7f-border 1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">470 states</td>
+            <td class="3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">308 states</td>
+            <td class="5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">84 states</td>
+            <td class="7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">7 states</td>
+        </tr>
+        <tr>
+            <th>-1</th>
+            <td class="7p-border 7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">8 states</td>
+            <td class="5p-border 7p-border 5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">88 states</td>
+            <td class="3p-border 5p-border 7p-border 3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">325 states</td>
+            <td class="1p-border 3p-border 5p-border 7p-border 1d-border 3d-border 5d-border 1f-border 3f-border 5f-border 7f-border 1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">490 states</td>
+            <td class="3p-border 5p-border 7p-border 3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">325 states</td>
+            <td class="5p-border 7p-border 5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">88 states</td>
+            <td class="7p-border 7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">8 states</td>
+        </tr>
+        <tr>
+            <th>0</th>
+            <td class="7p-border 7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">8 states</td>
+            <td class="5s-border 5p-border 7p-border 5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">90 states</td>
+            <td class="3s-border 5s-border 3p-border 5p-border 7p-border 3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">328 states</td>
+            <td class="1s-border 3s-border 5s-border 1p-border 3p-border 5p-border 7p-border 1d-border 3d-border 5d-border 1f-border 3f-border 5f-border 7f-border 1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">500 states</td>
+            <td class="3s-border 5s-border 3p-border 5p-border 7p-border 3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">328 states</td>
+            <td class="5s-border 5p-border 7p-border 5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">90 states</td>
+            <td class="7p-border 7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">8 states</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td class="7p-border 7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">8 states</td>
+            <td class="5p-border 7p-border 5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">88 states</td>
+            <td class="3p-border 5p-border 7p-border 3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">325 states</td>
+            <td class="1p-border 3p-border 5p-border 7p-border 1d-border 3d-border 5d-border 1f-border 3f-border 5f-border 7f-border 1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">490 states</td>
+            <td class="3p-border 5p-border 7p-border 3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">325 states</td>
+            <td class="5p-border 7p-border 5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">88 states</td>
+            <td class="7p-border 7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">8 states</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td class="7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">7 states</td>
+            <td class="5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">84 states</td>
+            <td class="3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">308 states</td>
+            <td class="1d-border 3d-border 5d-border 1f-border 3f-border 5f-border 7f-border 1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">470 states</td>
+            <td class="3d-border 5d-border 3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">308 states</td>
+            <td class="5d-border 5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">84 states</td>
+            <td class="7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">7 states</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td class="7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">7 states</td>
+            <td class="5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">76 states</td>
+            <td class="3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">287 states</td>
+            <td class="1f-border 3f-border 5f-border 7f-border 1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">436 states</td>
+            <td class="3f-border 5f-border 7f-border 3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">287 states</td>
+            <td class="5f-border 7f-border 5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">76 states</td>
+            <td class="7f-border 7g-border 7h-border 7i-border 7k-border 7m-border">7 states</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td class="7g-border 7h-border 7i-border 7k-border 7m-border">5 states</td>
+            <td class="5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">67 states</td>
+            <td class="3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">255 states</td>
+            <td class="1g-border 3g-border 5g-border 7g-border 1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">393 states</td>
+            <td class="3g-border 5g-border 7g-border 3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">255 states</td>
+            <td class="5g-border 7g-border 5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">67 states</td>
+            <td class="7g-border 7h-border 7i-border 7k-border 7m-border">5 states</td>
+        </tr>
+        <tr>
+            <th>5</th>
+            <td class="7h-border 7i-border 7k-border 7m-border">4 states</td>
+            <td class="5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">56 states</td>
+            <td class="3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">223 states</td>
+            <td class="1h-border 3h-border 5h-border 7h-border 1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">342 states</td>
+            <td class="3h-border 5h-border 7h-border 3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">223 states</td>
+            <td class="5h-border 7h-border 5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">56 states</td>
+            <td class="7h-border 7i-border 7k-border 7m-border">4 states</td>
+        </tr>
+        <tr>
+            <th>6</th>
+            <td class="7i-border 7k-border 7m-border">3 states</td>
+            <td class="5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">46 states</td>
+            <td class="3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">185 states</td>
+            <td class="1i-border 3i-border 5i-border 7i-border 1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">291 states</td>
+            <td class="3i-border 5i-border 7i-border 3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">185 states</td>
+            <td class="5i-border 7i-border 5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">46 states</td>
+            <td class="7i-border 7k-border 7m-border">3 states</td>
+        </tr>
+        <tr>
+            <th>7</th>
+            <td class="7k-border 7m-border">2 states</td>
+            <td class="5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">35 states</td>
+            <td class="3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">151 states</td>
+            <td class="1k-border 3k-border 5k-border 7k-border 1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">236 states</td>
+            <td class="3k-border 5k-border 7k-border 3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">151 states</td>
+            <td class="5k-border 7k-border 5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">35 states</td>
+            <td class="7k-border 7m-border">2 states</td>
+        </tr>
+        <tr>
+            <th>8</th>
+            <td class="7m-border">1 states</td>
+            <td class="5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">26 states</td>
+            <td class="3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">116 states</td>
+            <td class="1l-border 3l-border 5l-border 1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">187 states</td>
+            <td class="3l-border 5l-border 3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">116 states</td>
+            <td class="5l-border 5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">26 states</td>
+            <td class="7m-border">1 states</td>
+        </tr>
+        <tr>
+            <th>9</th>
+            <td class="7m-border">1 states</td>
+            <td class="5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">18 states</td>
+            <td class="3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">88 states</td>
+            <td class="1m-border 3m-border 5m-border 7m-border 1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">142 states</td>
+            <td class="3m-border 5m-border 7m-border 3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">88 states</td>
+            <td class="5m-border 7m-border 5n-border 5o-border 5q-border 5r-border 5t-border">18 states</td>
+            <td class="7m-border">1 states</td>
+        </tr>
+        <tr>
+            <th>10</th>
+            <td></td>
+            <td class="5n-border 5o-border 5q-border 5r-border 5t-border">12 states</td>
+            <td class="3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">62 states</td>
+            <td class="1n-border 3n-border 5n-border 1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">104 states</td>
+            <td class="3n-border 5n-border 3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">62 states</td>
+            <td class="5n-border 5o-border 5q-border 5r-border 5t-border">12 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>11</th>
+            <td></td>
+            <td class="5o-border 5q-border 5r-border 5t-border">7 states</td>
+            <td class="3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">43 states</td>
+            <td class="1o-border 3o-border 5o-border 1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">72 states</td>
+            <td class="3o-border 5o-border 3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">43 states</td>
+            <td class="5o-border 5q-border 5r-border 5t-border">7 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>12</th>
+            <td></td>
+            <td class="5q-border 5r-border 5t-border">4 states</td>
+            <td class="3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">27 states</td>
+            <td class="1q-border 3q-border 5q-border 1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">49 states</td>
+            <td class="3q-border 5q-border 3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">27 states</td>
+            <td class="5q-border 5r-border 5t-border">4 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>13</th>
+            <td></td>
+            <td class="5r-border 5t-border">2 states</td>
+            <td class="3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">17 states</td>
+            <td class="1r-border 3r-border 5r-border 1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">30 states</td>
+            <td class="3r-border 5r-border 3t-border 5t-border 3u-border 3v-border 3w-border">17 states</td>
+            <td class="5r-border 5t-border">2 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>14</th>
+            <td></td>
+            <td class="5t-border">1 states</td>
+            <td class="3t-border 5t-border 3u-border 3v-border 3w-border">9 states</td>
+            <td class="1t-border 3t-border 5t-border 1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">18 states</td>
+            <td class="3t-border 5t-border 3u-border 3v-border 3w-border">9 states</td>
+            <td class="5t-border">1 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>15</th>
+            <td></td>
+            <td></td>
+            <td class="3u-border 3v-border 3w-border">5 states</td>
+            <td class="1u-border 3u-border 1v-border 3v-border 3w-border 1x-border">10 states</td>
+            <td class="3u-border 3v-border 3w-border">5 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>16</th>
+            <td></td>
+            <td></td>
+            <td class="3v-border 3w-border">2 states</td>
+            <td class="1v-border 3v-border 3w-border 1x-border">5 states</td>
+            <td class="3v-border 3w-border">2 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>17</th>
+            <td></td>
+            <td></td>
+            <td class="3w-border">1 states</td>
+            <td class="3w-border 1x-border">2 states</td>
+            <td class="3w-border">1 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>18</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="1x-border">1 states</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    
+    <h3>Explanation:</h3>
+    <p>Each cell in the table represents a specific (M_L, M_S) combination. The colored borders around a cell indicate which term symbols that cell belongs to, according to the legend above.</p>
+    <p>The number inside each cell shows how many microstates exist with that specific (M_L, M_S) combination.</p>
+</body>
+</html>

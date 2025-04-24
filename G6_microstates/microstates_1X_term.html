@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microstates Table with Highlighted 1X Term Symbol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 4px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            position: relative;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .highlighted {
+            outline: 3px solid #8B008B;
+            outline-offset: 2px;
+            z-index: 1;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border: 2px solid #8B008B;
+        }
+        .config-info {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Microstates Table with Highlighted 1X Term Symbol</h2>
+    
+    <div class="config-info">
+        Configuration: G^6 (L=4, 6 electrons)
+    </div>
+    
+    <div class="legend">
+        <h3>Legend:</h3>
+        <div class="legend-item">
+            <div class="legend-color"></div>
+            <div>1X (1X)</div>
+        </div>
+    </div>
+    
+    <table>
+        <tr>
+            <th>M_L / M_S</th>
+            <th>3.0</th>
+            <th>2.0</th>
+            <th>1.0</th>
+            <th>0.0</th>
+            <th>-1.0</th>
+            <th>-2.0</th>
+            <th>-3.0</th>
+        </tr>
+        <tr>
+            <th>-18</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="highlighted">1 states</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-17</th>
+            <td></td>
+            <td></td>
+            <td>1 states</td>
+            <td class="highlighted">2 states</td>
+            <td>1 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-16</th>
+            <td></td>
+            <td></td>
+            <td>2 states</td>
+            <td class="highlighted">5 states</td>
+            <td>2 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-15</th>
+            <td></td>
+            <td></td>
+            <td>5 states</td>
+            <td class="highlighted">10 states</td>
+            <td>5 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-14</th>
+            <td></td>
+            <td>1 states</td>
+            <td>9 states</td>
+            <td class="highlighted">18 states</td>
+            <td>9 states</td>
+            <td>1 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-13</th>
+            <td></td>
+            <td>2 states</td>
+            <td>17 states</td>
+            <td class="highlighted">30 states</td>
+            <td>17 states</td>
+            <td>2 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-12</th>
+            <td></td>
+            <td>4 states</td>
+            <td>27 states</td>
+            <td class="highlighted">49 states</td>
+            <td>27 states</td>
+            <td>4 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-11</th>
+            <td></td>
+            <td>7 states</td>
+            <td>43 states</td>
+            <td class="highlighted">72 states</td>
+            <td>43 states</td>
+            <td>7 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-10</th>
+            <td></td>
+            <td>12 states</td>
+            <td>62 states</td>
+            <td class="highlighted">104 states</td>
+            <td>62 states</td>
+            <td>12 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>-9</th>
+            <td>1 states</td>
+            <td>18 states</td>
+            <td>88 states</td>
+            <td class="highlighted">142 states</td>
+            <td>88 states</td>
+            <td>18 states</td>
+            <td>1 states</td>
+        </tr>
+        <tr>
+            <th>-8</th>
+            <td>1 states</td>
+            <td>26 states</td>
+            <td>116 states</td>
+            <td class="highlighted">187 states</td>
+            <td>116 states</td>
+            <td>26 states</td>
+            <td>1 states</td>
+        </tr>
+        <tr>
+            <th>-7</th>
+            <td>2 states</td>
+            <td>35 states</td>
+            <td>151 states</td>
+            <td class="highlighted">236 states</td>
+            <td>151 states</td>
+            <td>35 states</td>
+            <td>2 states</td>
+        </tr>
+        <tr>
+            <th>-6</th>
+            <td>3 states</td>
+            <td>46 states</td>
+            <td>185 states</td>
+            <td class="highlighted">291 states</td>
+            <td>185 states</td>
+            <td>46 states</td>
+            <td>3 states</td>
+        </tr>
+        <tr>
+            <th>-5</th>
+            <td>4 states</td>
+            <td>56 states</td>
+            <td>223 states</td>
+            <td class="highlighted">342 states</td>
+            <td>223 states</td>
+            <td>56 states</td>
+            <td>4 states</td>
+        </tr>
+        <tr>
+            <th>-4</th>
+            <td>5 states</td>
+            <td>67 states</td>
+            <td>255 states</td>
+            <td class="highlighted">393 states</td>
+            <td>255 states</td>
+            <td>67 states</td>
+            <td>5 states</td>
+        </tr>
+        <tr>
+            <th>-3</th>
+            <td>7 states</td>
+            <td>76 states</td>
+            <td>287 states</td>
+            <td class="highlighted">436 states</td>
+            <td>287 states</td>
+            <td>76 states</td>
+            <td>7 states</td>
+        </tr>
+        <tr>
+            <th>-2</th>
+            <td>7 states</td>
+            <td>84 states</td>
+            <td>308 states</td>
+            <td class="highlighted">470 states</td>
+            <td>308 states</td>
+            <td>84 states</td>
+            <td>7 states</td>
+        </tr>
+        <tr>
+            <th>-1</th>
+            <td>8 states</td>
+            <td>88 states</td>
+            <td>325 states</td>
+            <td class="highlighted">490 states</td>
+            <td>325 states</td>
+            <td>88 states</td>
+            <td>8 states</td>
+        </tr>
+        <tr>
+            <th>0</th>
+            <td>8 states</td>
+            <td>90 states</td>
+            <td>328 states</td>
+            <td class="highlighted">500 states</td>
+            <td>328 states</td>
+            <td>90 states</td>
+            <td>8 states</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>8 states</td>
+            <td>88 states</td>
+            <td>325 states</td>
+            <td class="highlighted">490 states</td>
+            <td>325 states</td>
+            <td>88 states</td>
+            <td>8 states</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>7 states</td>
+            <td>84 states</td>
+            <td>308 states</td>
+            <td class="highlighted">470 states</td>
+            <td>308 states</td>
+            <td>84 states</td>
+            <td>7 states</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>7 states</td>
+            <td>76 states</td>
+            <td>287 states</td>
+            <td class="highlighted">436 states</td>
+            <td>287 states</td>
+            <td>76 states</td>
+            <td>7 states</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td>5 states</td>
+            <td>67 states</td>
+            <td>255 states</td>
+            <td class="highlighted">393 states</td>
+            <td>255 states</td>
+            <td>67 states</td>
+            <td>5 states</td>
+        </tr>
+        <tr>
+            <th>5</th>
+            <td>4 states</td>
+            <td>56 states</td>
+            <td>223 states</td>
+            <td class="highlighted">342 states</td>
+            <td>223 states</td>
+            <td>56 states</td>
+            <td>4 states</td>
+        </tr>
+        <tr>
+            <th>6</th>
+            <td>3 states</td>
+            <td>46 states</td>
+            <td>185 states</td>
+            <td class="highlighted">291 states</td>
+            <td>185 states</td>
+            <td>46 states</td>
+            <td>3 states</td>
+        </tr>
+        <tr>
+            <th>7</th>
+            <td>2 states</td>
+            <td>35 states</td>
+            <td>151 states</td>
+            <td class="highlighted">236 states</td>
+            <td>151 states</td>
+            <td>35 states</td>
+            <td>2 states</td>
+        </tr>
+        <tr>
+            <th>8</th>
+            <td>1 states</td>
+            <td>26 states</td>
+            <td>116 states</td>
+            <td class="highlighted">187 states</td>
+            <td>116 states</td>
+            <td>26 states</td>
+            <td>1 states</td>
+        </tr>
+        <tr>
+            <th>9</th>
+            <td>1 states</td>
+            <td>18 states</td>
+            <td>88 states</td>
+            <td class="highlighted">142 states</td>
+            <td>88 states</td>
+            <td>18 states</td>
+            <td>1 states</td>
+        </tr>
+        <tr>
+            <th>10</th>
+            <td></td>
+            <td>12 states</td>
+            <td>62 states</td>
+            <td class="highlighted">104 states</td>
+            <td>62 states</td>
+            <td>12 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>11</th>
+            <td></td>
+            <td>7 states</td>
+            <td>43 states</td>
+            <td class="highlighted">72 states</td>
+            <td>43 states</td>
+            <td>7 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>12</th>
+            <td></td>
+            <td>4 states</td>
+            <td>27 states</td>
+            <td class="highlighted">49 states</td>
+            <td>27 states</td>
+            <td>4 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>13</th>
+            <td></td>
+            <td>2 states</td>
+            <td>17 states</td>
+            <td class="highlighted">30 states</td>
+            <td>17 states</td>
+            <td>2 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>14</th>
+            <td></td>
+            <td>1 states</td>
+            <td>9 states</td>
+            <td class="highlighted">18 states</td>
+            <td>9 states</td>
+            <td>1 states</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>15</th>
+            <td></td>
+            <td></td>
+            <td>5 states</td>
+            <td class="highlighted">10 states</td>
+            <td>5 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>16</th>
+            <td></td>
+            <td></td>
+            <td>2 states</td>
+            <td class="highlighted">5 states</td>
+            <td>2 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>17</th>
+            <td></td>
+            <td></td>
+            <td>1 states</td>
+            <td class="highlighted">2 states</td>
+            <td>1 states</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>18</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="highlighted">1 states</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    
+    <h3>Explanation:</h3>
+    <p>Each cell in the table represents a specific (M_L, M_S) combination. The colored border around a cell indicates that it belongs to the term symbol shown in the legend.</p>
+    <p>The number inside each cell shows how many microstates exist with that specific (M_L, M_S) combination.</p>
+</body>
+</html>
