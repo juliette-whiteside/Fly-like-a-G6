@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microstates Table with Highlighted 2D Term Symbol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 4px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            position: relative;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .highlighted {
+            outline: 3px solid #A52A2A;
+            outline-offset: 2px;
+            z-index: 1;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border: 2px solid #A52A2A;
+        }
+        .config-info {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Microstates Table with Highlighted 2D Term Symbol</h2>
+    
+    <div class="config-info">
+        Configuration: D^1 (L=2, 1 electrons)
+    </div>
+    
+    <div class="legend">
+        <h3>Legend:</h3>
+        <div class="legend-item">
+            <div class="legend-color"></div>
+            <div>2D (2D)</div>
+        </div>
+    </div>
+    
+    <table>
+        <tr>
+            <th>M_L / M_S</th>
+            <th>0.5</th>
+            <th>-0.5</th>
+        </tr>
+        <tr>
+            <th>-2</th>
+            <td class="highlighted">1 states</td>
+            <td class="highlighted">1 states</td>
+        </tr>
+        <tr>
+            <th>-1</th>
+            <td class="highlighted">1 states</td>
+            <td class="highlighted">1 states</td>
+        </tr>
+        <tr>
+            <th>0</th>
+            <td class="highlighted">1 states</td>
+            <td class="highlighted">1 states</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td class="highlighted">1 states</td>
+            <td class="highlighted">1 states</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td class="highlighted">1 states</td>
+            <td class="highlighted">1 states</td>
+        </tr>
+    </table>
+    
+    <h3>Explanation:</h3>
+    <p>Each cell in the table represents a specific (M_L, M_S) combination. The colored border around a cell indicates that it belongs to the term symbol shown in the legend.</p>
+    <p>The number inside each cell shows how many microstates exist with that specific (M_L, M_S) combination.</p>
+</body>
+</html>
